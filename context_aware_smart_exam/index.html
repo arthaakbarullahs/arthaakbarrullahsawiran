@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Context-Aware Smart Exam</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <div>
+        <p class="badge">Komputasi Pervasif</p>
+        <h1>Context-Aware Smart Exam</h1>
+        <p class="subtitle">
+          Simulasi E-Ujian dengan Tab Visibility Monitor dan Idle / AFK Detector.
+        </p>
+      </div>
+      <div class="status-card">
+        <span id="connectionStatus">Ready</span>
+        <small>Status Sistem</small>
+      </div>
+    </header>
+
+    <main>
+      <!-- Halaman Mulai -->
+      <section id="startPage" class="card">
+        <h2>Mulai Ujian</h2>
+        <p>Masukkan identitas sebelum memulai ujian.</p>
+
+        <label for="studentName">Nama</label>
+        <input id="studentName" type="text" placeholder="Contoh: Artha Akbarrulah Sawiran" />
+
+        <label for="studentId">NIM</label>
+        <input id="studentId" type="text" placeholder="Contoh: 230741109" />
+
+        <button id="startBtn">Mulai Ujian</button>
+
+        <div class="info-box">
+          <strong>Aturan:</strong>
+          <ul>
+            <li>Jangan berpindah tab selama ujian.</li>
+            <li>Jika tidak aktif lebih dari 20 detik, sistem akan mendeteksi AFK.</li>
+            <li>Jika berpindah tab 3 kali, ujian akan otomatis terkunci.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Halaman Ujian -->
+      <section id="examPage" class="card hidden">
+        <div class="exam-topbar">
+          <div>
+            <h2>Halaman Ujian</h2>
+            <p id="studentInfo"></p>
+          </div>
+          <div class="timer-box">
+            <span id="timer">05:00</span>
+            <small>Sisa Waktu</small>
+          </div>
+        </div>
+
+        <div class="monitor-grid">
+          <div class="monitor">
+            <strong>Tab Switch</strong>
+            <span id="tabCount">0</span>
+          </div>
+          <div class="monitor">
+            <strong>Status Pengguna</strong>
+            <span id="userStatus">Aktif</span>
+          </div>
+          <div class="monitor">
+            <strong>AFK Total</strong>
+            <span id="idleTotal">0 detik</span>
+          </div>
+        </div>
+
+        <div id="warningBox" class="warning hidden"></div>
+
+        <form id="questionForm"></form>
+
+        <button id="submitBtn">Selesai & Lihat Hasil</button>
+      </section>
+
+      <!-- Halaman Hasil -->
+      <section id="resultPage" class="card hidden">
+        <h2>Hasil Ujian</h2>
+        <div class="result-grid">
+          <div>
+            <p class="result-label">Nama</p>
+            <h3 id="resultName">-</h3>
+          </div>
+          <div>
+            <p class="result-label">NIM</p>
+            <h3 id="resultNim">-</h3>
+          </div>
+          <div>
+            <p class="result-label">Skor</p>
+            <h3 id="scoreText">0/5</h3>
+          </div>
+          <div>
+            <p class="result-label">Status</p>
+            <h3 id="finalStatus">Selesai</h3>
+          </div>
+        </div>
+
+        <h3>Log Perilaku</h3>
+        <ul id="behaviorLog" class="log-list"></ul>
+
+        <button id="restartBtn">Ulangi Ujian</button>
+      </section>
+    </main>
+
+    <footer>
+      <p>Mini Online Exam Platform — Web API Pervasive Computing Feature</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

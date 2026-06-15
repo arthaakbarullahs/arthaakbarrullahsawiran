@@ -1,0 +1,11 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Open Smart Exam",
+      "type": "msedge",
+      "request": "launch",
+      "file": "${workspaceFolder}/context_aware_smart_exam/index.html"
+    }
+  ]
+}
